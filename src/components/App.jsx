@@ -53,8 +53,9 @@ export class App extends Component {
   }
 
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    this.writeToLS();
+    componentDidUpdate(prevProps, prevState, snapshot) {
+    if(prevState.contacts!==this.state.contacts)
+      this.writeToLS();
   }
   render(){
     let filtered = this.state.contacts.filter(o=>this.isOkayObj(o));
